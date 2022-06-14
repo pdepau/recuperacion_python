@@ -17,15 +17,23 @@ def search_by_lon(longitud,diccionario):
             return i["id"]
     if(existeLon==False):
         raise ValueError ("No existe")
+
+
 def get_min(valor,diccionario):
     lista=[]
-    prueba=float("123")
-    id=None
+    
     
     for i in diccionario:
-        id=int(i['id'])
-        if(id<valor):
-            dic = {'name': , 'description': "Maria"}
+        diccionarioTemporal=diccionario[i]
+        id=int(diccionarioTemporal['id'])
+        if(id<int(valor)):
+            name=diccionarioTemporal['name']
+            descripcion=diccionarioTemporal['description']
+            dic = {'name': name, 'description': descripcion}
+            lista.append(dic)
+            
+    return lista
+    
     
 
 if __name__ == "__main__":
@@ -186,5 +194,5 @@ if __name__ == "__main__":
     #print(descripcion)
     #nombre,descripcion=get_name_description("1",json)
     #id=search_by_lon(728257.03,json)
-    print(int("123"))
+    print(get_min("1029",json))
 
