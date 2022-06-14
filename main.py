@@ -1,4 +1,7 @@
 
+from wsgiref.validate import validator
+
+
 def get_name_description(clave, diccionario):
     if(diccionario.get(clave)==None):
           raise ValueError ("Ha saltado error")
@@ -10,19 +13,19 @@ def search_by_lon(longitud,diccionario):
     if(type(longitud)!=float):
         raise ValueError ("No es de tipo Float")
     existeLon=False
-    longitud=str(longitud)
+    
     for i in diccionario:
-        if(i["lon"]==longitud):
+        diccionarioTemporal=diccionario[i]
+        valor=float(diccionarioTemporal['lon'])
+        if(valor==longitud):
             existeLon=True
-            return i["id"]
+            return i
     if(existeLon==False):
         raise ValueError ("No existe")
 
 
 def get_min(valor,diccionario):
-    lista=[]
-    
-    
+    lista=[] 
     for i in diccionario:
         diccionarioTemporal=diccionario[i]
         id=int(diccionarioTemporal['id'])
@@ -189,10 +192,15 @@ if __name__ == "__main__":
              'lon': '728257.03',
              'name': 'Ramon Llull - Bernat Fenollar'}
         }
-    #nombre,descripcion=get_name_description("1080",json)
-    #print(nombre)
-    #print(descripcion)
+    print("ejercicio 3:")
+    nombre,descripcion=get_name_description("1080",json)
+    print(nombre)
+    print(descripcion)
+    print("----------------------------------")
+    print("ejercicio 4:")
     #nombre,descripcion=get_name_description("1",json)
-    #id=search_by_lon(728257.03,json)
-    print(get_min("1029",json))
+    print(search_by_lon(728257.03,json))
+    print("-------------------")
+    print("ejercicio 5:")
+    print(get_min("1023",json))
 
