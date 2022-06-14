@@ -6,6 +6,28 @@ def get_name_description(clave, diccionario):
     diccionario_filtrado=diccionario[clave]
     return diccionario_filtrado["name"],diccionario_filtrado["description"]
 
+def search_by_lon(longitud,diccionario):
+    if(type(longitud)!=float):
+        raise ValueError ("No es de tipo Float")
+    existeLon=False
+    longitud=str(longitud)
+    for i in diccionario:
+        if(i["lon"]==longitud):
+            existeLon=True
+            return i["id"]
+    if(existeLon==False):
+        raise ValueError ("No existe")
+def get_min(valor,diccionario):
+    lista=[]
+    prueba=float("123")
+    id=None
+    
+    for i in diccionario:
+        id=int(i['id'])
+        if(id<valor):
+            dic = {'name': , 'description': "Maria"}
+    
+
 if __name__ == "__main__":
     json={
         '1020': {'description': 'PSEG ALAMEDA 14 (DAVANT JARDÍ VIA CENTRAL) - VALÈNCIA',
@@ -159,6 +181,10 @@ if __name__ == "__main__":
              'lon': '728257.03',
              'name': 'Ramon Llull - Bernat Fenollar'}
         }
-    nombre,descripcion=get_name_description("1",json)
-    print(nombre)
-    print(descripcion)
+    #nombre,descripcion=get_name_description("1080",json)
+    #print(nombre)
+    #print(descripcion)
+    #nombre,descripcion=get_name_description("1",json)
+    #id=search_by_lon(728257.03,json)
+    print(int("123"))
+
